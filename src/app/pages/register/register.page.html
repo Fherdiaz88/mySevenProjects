@@ -1,0 +1,108 @@
+<ion-header class="no-shadow">
+  <ion-toolbar color="primary">
+    <ion-title class="ion-text-center">Registrarse</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content fullscreen class="ion-padding login-full-bg">
+
+  <ion-grid class="ion-justify-content-center ion-align-items-center" style="height: 100%;">
+    <ion-row class="ion-justify-content-center">
+      <ion-col size="12" size-md="6" size-lg="4">
+
+        <ion-card class="ion-padding" style="box-shadow: 0 8px 16px rgba(0,0,0,0.1); border-radius: 20px;">
+
+          <ion-card-header class="ion-text-center">
+            <img src="https://cdn-icons-png.flaticon.com/512/2422/2422601.png" alt="Registro de usuario" style="width: 100px; margin-bottom: 10px;" />
+            <ion-card-title style="font-size: 1.4rem;">Crea tu cuenta</ion-card-title>
+            <ion-card-subtitle style="color: gray;">Regístrate para continuar</ion-card-subtitle>
+          </ion-card-header>
+
+          <ion-card-content>
+
+            <form [formGroup]="registerForm" (ngSubmit)="registerEmail()">
+
+              <ion-item lines="none" class="input-wrapper">
+                <ion-icon slot="start" name="mail-outline" color="primary"></ion-icon>
+                <ion-input
+                  formControlName="email"
+                  type="email"
+                  placeholder="Correo electrónico"
+                  fill="outline"
+                  required
+                ></ion-input>
+              </ion-item>
+              <ion-text color="danger" *ngIf="registerForm.get('email')?.invalid && registerForm.get('email')?.touched">
+                <p class="ion-padding-start">Email inválido.</p>
+              </ion-text>
+
+              <ion-item lines="none" class="input-wrapper ion-margin-top">
+                <ion-icon slot="start" name="key-outline" color="primary"></ion-icon>
+                <ion-input
+                  [type]="showPassword ? 'text' : 'password'"
+                  formControlName="password"
+                  placeholder="Contraseña"
+                  fill="outline"
+                  required
+                ></ion-input>
+                <ion-button
+                  fill="clear"
+                  size="small"
+                  slot="end"
+                  (click)="togglePasswordVisibility()">
+                  <ion-icon [name]="showPassword ? 'eye-off-outline' : 'eye-outline'"></ion-icon>
+                </ion-button>
+              </ion-item>
+              <ion-text color="danger" *ngIf="registerForm.get('password')?.invalid && registerForm.get('password')?.touched">
+                <p class="ion-padding-start">Mínimo 6 caracteres.</p>
+              </ion-text>
+
+              <ion-button expand="block" type="submit" color="primary" class="ion-margin-top">
+                Registrarse
+              </ion-button>
+
+            </form>
+
+            <ion-text color="medium" class="ion-text-center ion-margin-top">
+              <p style="font-size: 0.9rem;">— o continúa con —</p>
+            </ion-text>
+
+            <ion-grid class="ion-padding-top">
+              <ion-row class="ion-justify-content-center" style="gap: 12px;">
+                <ion-col size="12" size-sm="6">
+                  <ion-button expand="block" fill="outline" color="danger" (click)="registerGoogle()">
+                    <img src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg"
+                         style="width: 20px; margin-right: 8px;" />
+                    Google
+                  </ion-button>
+                </ion-col>
+                <ion-col size="12" size-sm="6">
+                  <ion-button expand="block" fill="outline" color="primary" (click)="registerFacebook()">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/0/05/Facebook_Logo_%282019%29.png"
+                         style="width: 20px; margin-right: 8px;" />
+                    Facebook
+                  </ion-button>
+                </ion-col>
+              </ion-row>
+            </ion-grid>
+
+            <ion-text *ngIf="success" color="success" class="ion-text-center ion-margin-top">
+              <p>{{ success }}</p>
+            </ion-text>
+
+            <ion-text *ngIf="error" color="danger" class="ion-text-center ion-margin-top">
+              <p>{{ error }}</p>
+            </ion-text>
+
+            <ion-text class="ion-text-center ion-margin-top">
+              <p style="font-size: 0.9rem;">¿Ya tienes cuenta? <a (click)="goToLogin()" style="text-decoration: underline;">Inicia sesión</a></p>
+            </ion-text>
+
+          </ion-card-content>
+        </ion-card>
+
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+</ion-content>

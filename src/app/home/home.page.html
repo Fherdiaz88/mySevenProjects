@@ -1,0 +1,56 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title class="ion-text-center">
+      <ion-icon name="home-outline" slot="start"></ion-icon>
+      Bienvenido
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content fullscreen class="ion-padding">
+
+  <ion-grid class="ion-justify-content-center ion-align-items-center" style="height: 100%;">
+    <ion-row class="ion-justify-content-center">
+      <ion-col size="12" size-md="6" size-lg="4">
+
+        <ion-card class="ion-padding">
+
+          <ion-card-header class="ion-text-center">
+            <img src="https://cdn-icons-png.flaticon.com/512/4202/4202843.png" alt="Bienvenida" style="width: 120px; margin: auto;" />
+
+            <ion-card-title style="margin-top: 16px;">¡Bienvenido a la página principal!</ion-card-title>
+          </ion-card-header>
+
+          <ion-card-content>
+
+            <ion-button expand="block" color="danger" (click)="logout()">
+              <ion-icon slot="start" name="log-out-outline"></ion-icon>
+              Cerrar sesión
+            </ion-button>
+
+            <ion-button expand="block" color="primary" (click)="tomarFoto()" class="ion-margin-top">
+              <ion-icon slot="start" name="camera-outline"></ion-icon>
+              Tomar Foto
+            </ion-button>
+
+            <ion-img *ngIf="foto" [src]="foto" class="ion-margin-top" style="max-width: 100%; border-radius: 12px;"></ion-img>
+
+            <ion-chip color="success" *ngIf="isOnline" class="ion-margin-top">
+              <ion-icon name="wifi-outline"></ion-icon>
+              <ion-label>¡Conectado a Internet!</ion-label>
+            </ion-chip>
+
+            <ion-chip color="danger" *ngIf="!isOnline" class="ion-margin-top">
+              <ion-icon name="cloud-offline-outline"></ion-icon>
+              <ion-label>Sin conexión a Internet</ion-label>
+            </ion-chip>
+
+          </ion-card-content>
+
+        </ion-card>
+
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+</ion-content>
