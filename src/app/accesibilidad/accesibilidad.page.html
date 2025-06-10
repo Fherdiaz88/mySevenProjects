@@ -1,0 +1,83 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title tabindex="0">Accesibilidad</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <h2 tabindex="0" aria-label="Formulario de contacto accesible">
+    Formulario accesible e inclusivo
+  </h2>
+
+  <p tabindex="0">
+    Formulario diseñado para ser inclusivo y accesible.
+  </p>
+
+  <form>
+    <ion-item>
+      <ion-label position="stacked" for="nombre">Nombre</ion-label>
+      <ion-input
+        id="nombre"
+        aria-label="Nombre completo"
+        type="text"
+        required
+        tabindex="0"
+        [(ngModel)]="nombre"
+        name="nombre"
+      ></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="stacked" for="correo">Correo</ion-label>
+      <ion-input
+        id="correo"
+        aria-label="Correo electrónico"
+        type="email"
+        required
+        tabindex="0"
+        [(ngModel)]="correo"
+        name="correo"
+      ></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="stacked" for="mensaje">Mensaje</ion-label>
+      <ion-textarea
+        id="mensaje"
+        aria-label="Tu mensaje"
+        required
+        tabindex="0"
+        [(ngModel)]="mensaje"
+        name="mensaje"
+      ></ion-textarea>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="stacked" for="cedula">Cédula</ion-label>
+      <ion-input
+        id="cedula"
+        aria-label="Número de cédula"
+        type="text"
+        required
+        tabindex="0"
+        [(ngModel)]="cedula"
+        name="cedula"
+      ></ion-input>
+    </ion-item>
+
+    <ion-button
+      expand="block"
+      color="primary"
+      tabindex="0"
+      aria-label="Enviar formulario"
+      (click)="enviarFormulario()"
+    >
+      Enviar
+    </ion-button>
+
+    <p *ngIf="guardadoMensaje" tabindex="0" aria-live="polite" style="margin-top: 10px;">
+      {{ guardadoMensaje }}
+    </p>
+  </form>
+</ion-content>
+

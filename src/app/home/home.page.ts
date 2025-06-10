@@ -74,4 +74,9 @@ networkListener: any;
   // ...tu lógica de login...
   this.nav.navigateRoot('/home'); // Esto limpia el historial
 }
+
+irAccesibilidad() {
+  this.router.navigate(['/accesibilidad']);
+}
+
 }

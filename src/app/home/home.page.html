@@ -33,6 +33,13 @@
               Tomar Foto
             </ion-button>
 
+            <ion-button (click)="irAccesibilidad()" expand="block" color="primary">
+  Página de Accesibilidad
+</ion-button>
+
+
+
+
             <ion-img *ngIf="foto" [src]="foto" class="ion-margin-top" style="max-width: 100%; border-radius: 12px;"></ion-img>
 
             <ion-chip color="success" *ngIf="isOnline" class="ion-margin-top">
