@@ -55,17 +55,7 @@ export class AccesibilidadPage implements OnInit {
         this.guardadoMensaje = '';
       }, 5000);
 
-    } else {
-      this.guardadoMensaje = 'Todos los campos son obligatorios.';  
-
-      const alert = await this.alertCtrl.create({
-        header: 'Error',
-        message: this.guardadoMensaje,
-        buttons: ['OK']
-      });
-
-      await alert.present();
-
+    
       
       
     }
