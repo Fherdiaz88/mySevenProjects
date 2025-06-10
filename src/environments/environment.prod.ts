@@ -1,13 +1,12 @@
 export const environment = {
-  production: true
+  production: true,
+  firebaseConfig: {
+    apiKey: "AIzaSyCkNKLqXqByQa_AKllIukGDILpHaE9tII0",
+    authDomain: "fir-ionic-7c8fe.firebaseapp.com",
+    projectId: "fir-ionic-7c8fe",
+    storageBucket: "fir-ionic-7c8fe.firebasestorage.app",
+    messagingSenderId: "837831621140",
+    appId: "1:837831621140:web:108aaae3bf87bc312dc501",
+    measurementId: "G-HLNXM32RKE"
+  }
 };
-export const firebaseConfig = {
-  apiKey: "AIzaSyCQc13MyTtpJsFaghOSoof_QXisi1OHtAE",
-  authDomain: "fir-prueba-d3d06.firebaseapp.com",
-  projectId: "fir-prueba-d3d06",
-  storageBucket: "fir-prueba-d3d06.appspot.com",
-  messagingSenderId: "672530040546",
-  appId: "1:672530040546:web:bf4e4160e58daa708780bb",
-  measurementId: "G-2RLR26FXKT"
-};
-

@@ -8,23 +8,25 @@ import { defineCustomElements } from '@ionic/pwa-elements/loader';
 import { routes } from './app/app.routes';
 import { AppComponent } from './app/app.component';
 
-// Importa AngularFire
+// 🔧 Cambia esta línea:
+import { environment } from './environments/environment';
+
+// Firebase
 import { provideFirebaseApp, initializeApp } from '@angular/fire/app';
 import { provideAuth, getAuth } from '@angular/fire/auth';
-import { firebaseConfig } from './environments/environment.prod';
-
 
 bootstrapApplication(AppComponent, {
   providers: [
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
     provideIonicAngular(),
     provideRouter(routes, withPreloading(PreloadAllModules)),
-    provideFirebaseApp(() => initializeApp(firebaseConfig)),
+
+    // 🔧 Usa environment.firebaseConfig
+    provideFirebaseApp(() => initializeApp(environment.firebaseConfig)),
     provideAuth(() => getAuth()),
-
   ],
+});
 
-})
 addIcons({
   'mail-outline': mailOutline,
   'key-outline': keyOutline,
@@ -32,4 +34,4 @@ addIcons({
   'eye-off-outline': eyeOffOutline,
 });
 
-defineCustomElements(window)
+defineCustomElements(window);

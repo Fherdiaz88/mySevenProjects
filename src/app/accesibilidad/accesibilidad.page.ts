@@ -16,7 +16,7 @@ export class AccesibilidadPage implements OnInit {
   correo = '';
   mensaje = '';
   cedula = '';
-  guardadoMensaje = '';  // <-- AGREGADO para mostrar mensajes en el HTML
+  guardadoMensaje = ''; 
 
   constructor(private alertCtrl: AlertController) {}
 
@@ -29,14 +29,13 @@ export class AccesibilidadPage implements OnInit {
 
   async enviarFormulario() {
     if (this.nombre && this.correo && this.mensaje && this.cedula) {
-      // Guardar la cédula en Preferences
+    
       await Preferences.set({
         key: 'cedulaUsuario',
         value: this.cedula
       });
 
-      this.guardadoMensaje = 'Tu mensaje ha sido enviado correctamente.';  // MENSAJE para mostrar
-
+      this.guardadoMensaje = 'Tu mensaje ha sido enviado correctamente.';  
       const alert = await this.alertCtrl.create({
         header: 'Enviado',
         message: this.guardadoMensaje,
@@ -55,9 +54,21 @@ export class AccesibilidadPage implements OnInit {
         this.guardadoMensaje = '';
       }, 5000);
 
-    
+    } else {
+      this.guardadoMensaje = 'Todos los campos son obligatorios.';  
+
+      const alert = await this.alertCtrl.create({
+        header: 'Error',
+        message: this.guardadoMensaje,
+        buttons: ['OK']
+      });
+
+      await alert.present();
+
       
-      
+      setTimeout(() => {
+        this.guardadoMensaje = '';
+      }, 5000);
     }
   }
 }
